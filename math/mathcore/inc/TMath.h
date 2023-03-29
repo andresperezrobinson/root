@@ -479,34 +479,35 @@ struct Limits {
    Bool_t    RootsCubic(const Double_t coef[4],Double_t &a, Double_t &b, Double_t &c);
 
    /////////////////////////////////////////////////////////////////////////////
+   // Information gathered from (https://root.cern.ch/root/html524/TMath.html#TMath:Voigt)
    // Statistic Functions
-
-   Double_t Binomial(Int_t n,Int_t k);  // Calculate the binomial coefficient n over k
-   Double_t BinomialI(Double_t p, Int_t n, Int_t k);
-   Double_t BreitWigner(Double_t x, Double_t mean=0, Double_t gamma=1);
+   
+   Double_t Binomial(Int_t n,Int_t k);       /// Calculate the binomial coefficient n over k
+   Double_t BinomialI(Double_t p, Int_t n, Int_t k);        /// Calculate the probability mass function
+   Double_t BreitWigner(Double_t x, Double_t mean=0, Double_t gamma=1);       /// Calculate a Breit Wigner function with mean and gamma
    Double_t BreitWignerRelativistic(Double_t x, Double_t median=0, Double_t gamma=1);
-   Double_t CauchyDist(Double_t x, Double_t t=0, Double_t s=1);
-   Double_t ChisquareQuantile(Double_t p, Double_t ndf);
-   Double_t FDist(Double_t F, Double_t N, Double_t M);
-   Double_t FDistI(Double_t F, Double_t N, Double_t M);
-   Double_t Gaus(Double_t x, Double_t mean=0, Double_t sigma=1, Bool_t norm=kFALSE);
-   Double_t KolmogorovProb(Double_t z);
-   Double_t KolmogorovTest(Int_t na, const Double_t *a, Int_t nb, const Double_t *b, Option_t *option);
-   Double_t Landau(Double_t x, Double_t mpv=0, Double_t sigma=1, Bool_t norm=kFALSE);
-   Double_t LandauI(Double_t x);
-   Double_t LaplaceDist(Double_t x, Double_t alpha=0, Double_t beta=1);
-   Double_t LaplaceDistI(Double_t x, Double_t alpha=0, Double_t beta=1);
-   Double_t LogNormal(Double_t x, Double_t sigma, Double_t theta=0, Double_t m=1);
-   Double_t NormQuantile(Double_t p);
-   Double_t Poisson(Double_t x, Double_t par);
-   Double_t PoissonI(Double_t x, Double_t par);
-   Double_t Prob(Double_t chi2,Int_t ndf);
-   Double_t Student(Double_t T, Double_t ndf);
-   Double_t StudentI(Double_t T, Double_t ndf);
-   Double_t StudentQuantile(Double_t p, Double_t ndf, Bool_t lower_tail=kTRUE);
-   Double_t Vavilov(Double_t x, Double_t kappa, Double_t beta2);
-   Double_t VavilovI(Double_t x, Double_t kappa, Double_t beta2);
-   Double_t Voigt(Double_t x, Double_t sigma, Double_t lg, Int_t r = 4);
+   Double_t CauchyDist(Double_t x, Double_t t=0, Double_t s=1);         /// Computes the density of Cauchy distribution at point x
+   Double_t ChisquareQuantile(Double_t p, Double_t ndf);       /// Evaluate the quantiles of the chi-squared probability distribution function
+   Double_t FDist(Double_t F, Double_t N, Double_t M);         /// Computes the density function of F-distribution
+   Double_t FDistI(Double_t F, Double_t N, Double_t M);        /// Calculates the cumulative distribution function of F-distribution
+   Double_t Gaus(Double_t x, Double_t mean=0, Double_t sigma=1, Bool_t norm=kFALSE);         /// Calculate a gaussian function with mean and sigma
+   Double_t KolmogorovProb(Double_t z);         /// Calculates the Kolmogorov distribution function
+   Double_t KolmogorovTest(Int_t na, const Double_t *a, Int_t nb, const Double_t *b, Option_t *option); /// Compares two experimental distributions with the Kolmogorov test
+   Double_t Landau(Double_t x, Double_t mpv=0, Double_t sigma=1, Bool_t norm=kFALSE);     /// The LANDAU function
+   Double_t LandauI(Double_t x);       /// Returns the value of the Landau distribution function at point x
+   Double_t LaplaceDist(Double_t x, Double_t alpha=0, Double_t beta=1);                   /// Computes the probability density funciton of Laplace distribution
+   Double_t LaplaceDistI(Double_t x, Double_t alpha=0, Double_t beta=1);                  /// Computes the distribution funciton of Laplace distribution
+   Double_t LogNormal(Double_t x, Double_t sigma, Double_t theta=0, Double_t m=1);        /// Computes the density of LogNormal distribution at point x
+   Double_t NormQuantile(Double_t p);        /// Computes quantiles for standard normal distribution N(0, 1) at probability p
+   Double_t Poisson(Double_t x, Double_t par);        /// Compute the Poisson distribution function for (x,par)
+   Double_t PoissonI(Double_t x, Double_t par);       /// Compute the Poisson distribution function for (x,par)
+   Double_t Prob(Double_t chi2,Int_t ndf);            /// Computation of the probability for a certain Chi-squared (chi2)
+   Double_t Student(Double_t T, Double_t ndf);        /// Computes density function for Student's t- distribution
+   Double_t StudentI(Double_t T, Double_t ndf);       /// Calculates the cumulative distribution function of Student's t-distribution
+   Double_t StudentQuantile(Double_t p, Double_t ndf, Bool_t lower_tail=kTRUE);        /// Computes quantiles of the Student's t-distribution
+   Double_t Vavilov(Double_t x, Double_t kappa, Double_t beta2);                       /// Returns the value of the Vavilov density function
+   Double_t VavilovI(Double_t x, Double_t kappa, Double_t beta2);                      /// Returns the value of the Vavilov distribution function
+   Double_t Voigt(Double_t x, Double_t sigma, Double_t lg, Int_t r = 4);               /// Computation of Voigt function (normalised)
 
    /////////////////////////////////////////////////////////////////////////////
    // Statistics over arrays
@@ -535,12 +536,12 @@ struct Limits {
 
    /////////////////////////////////////////////////////////////////////////////
    // Special Functions
-
-   Double_t Beta(Double_t p, Double_t q);
-   Double_t BetaCf(Double_t x, Double_t a, Double_t b);
-   Double_t BetaDist(Double_t x, Double_t p, Double_t q);
-   Double_t BetaDistI(Double_t x, Double_t p, Double_t q);
-   Double_t BetaIncomplete(Double_t x, Double_t a, Double_t b);
+      
+   Double_t Beta(Double_t p, Double_t q);                         /// Calculates Beta-function Gamma(p)*Gamma(q)/Gamma(p+q)
+   Double_t BetaCf(Double_t x, Double_t a, Double_t b);           /// Continued fraction evaluation by modified Lentz's method used in calculation of incomplete Beta function.
+   Double_t BetaDist(Double_t x, Double_t p, Double_t q);         /// Computes the probability density function of the Beta distribution
+   Double_t BetaDistI(Double_t x, Double_t p, Double_t q);        /// Computes the distribution function of the Beta distribution
+   Double_t BetaIncomplete(Double_t x, Double_t a, Double_t b);   /// Calculates the incomplete Beta-function 
 
    // Bessel functions
    Double_t BesselI(Int_t n,Double_t x);  /// Integer order modified Bessel function I_n(x)
@@ -558,16 +559,16 @@ struct Limits {
    Double_t StruveL0(Double_t x);         /// Modified Struve functions of order 0
    Double_t StruveL1(Double_t x);         /// Modified Struve functions of order 1
 
-   Double_t DiLog(Double_t x);
-   Double_t Erf(Double_t x);
-   Double_t ErfInverse(Double_t x);
-   Double_t Erfc(Double_t x);
-   Double_t ErfcInverse(Double_t x);
-   Double_t Freq(Double_t x);
-   Double_t Gamma(Double_t z);
-   Double_t Gamma(Double_t a,Double_t x);
-   Double_t GammaDist(Double_t x, Double_t gamma, Double_t mu=0, Double_t beta=1);
-   Double_t LnGamma(Double_t z);
+   Double_t DiLog(Double_t x);            /// Computes the DiLogarithm function of x
+   Double_t Erf(Double_t x);              /// Computes the error function of x
+   Double_t ErfInverse(Double_t x);       /// Computes the inverse of the error function of x
+   Double_t Erfc(Double_t x);             /// Computes the complementary error function erfc(x)
+   Double_t ErfcInverse(Double_t x);      /// Returns  the inverse of the complementary error function
+   Double_t Freq(Double_t x);             /// Computes the normal frequency function freq(x)
+   Double_t Gamma(Double_t z);            /// Computes gamma(z) for all z
+   Double_t Gamma(Double_t a,Double_t x); /// Computes the normalized lower incomplete gamma function P(a,x)
+   Double_t GammaDist(Double_t x, Double_t gamma, Double_t mu=0, Double_t beta=1);     /// Computes the density function of Gamma distribution at point x
+   Double_t LnGamma(Double_t z);          /// Computes ln[gamma(z)] for all z
 }
 
 ////////////////////////////////////////////////////////////////////////////////
